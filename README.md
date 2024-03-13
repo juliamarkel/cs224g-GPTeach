@@ -1,5 +1,9 @@
 # cs224g-GPTeach
 
+## Running it yourself
+1. git clone
+2. fill in .env vars (API keys for firebase and openAI)
+3. follow development instructions
 
 ## Development
 

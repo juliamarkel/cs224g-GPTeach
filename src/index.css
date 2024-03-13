@@ -1,0 +1,9 @@
+#everythingWrapper {
+	width: 100vw;
+	height: calc(100vh - 56px);
+}
+
+#everythingWrapper > div {
+	border: 1px solid lightgray;
+	padding: 15px;
+}

@@ -1,0 +1,39 @@
+.messagesWrapper {
+	height: 100%;
+	overflow: auto;
+	flex-grow: 1;
+	margin-top: 7px;
+	margin-bottom: 5px;
+}
+
+.chatBubble {
+	border-radius: 20px;
+	max-width: 70%;
+	min-width: 30%;
+	/* add breathing room between bubbles */
+	margin-bottom: 4px;
+	/*  handles line break for very long words */
+	overflow-wrap: break-word;
+	padding: 15px;
+}
+
+.chatBubbleContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.chatBubbleSenderLabel {
+	color: rgba(0, 0, 0, 0.4);
+	font-size: 0.8rem;
+	padding-left: 12px;
+}
+
+.chatBubbleUser {
+	align-self: end;
+	background-color: lightskyblue;
+}
+
+.chatBubbleOther {
+	align-self: start;
+	background-color: #f1f1f1;
+}

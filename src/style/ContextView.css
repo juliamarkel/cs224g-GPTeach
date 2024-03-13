@@ -1,0 +1,9 @@
+.contextView h2 {
+	font-size: x-large;
+	font-weight: 600;
+	margin-top: 10px;
+}
+
+.contextView .list-group {
+	margin-bottom: 14px;
+}

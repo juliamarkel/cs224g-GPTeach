@@ -1,0 +1,18 @@
+.progressDot {
+	border-radius: 100%;
+	border: 5px solid grey;
+	color: grey;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	cursor: default;
+}
+
+.doneDot {
+	background-color: rgb(111, 232, 51);
+}
+
+.inProgressDot {
+	background-color: rgba(164, 231, 179, 0.5);
+}

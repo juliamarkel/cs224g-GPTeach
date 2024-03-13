@@ -1,0 +1,7 @@
+#everythingWrapper.chatOnly .chatConvoWrapper {
+	max-width: 45%;
+}
+
+#everythingWrapper.chatOnly .contextView {
+	max-width: 40%;
+}

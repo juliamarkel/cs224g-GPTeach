@@ -29,7 +29,9 @@ export const Router = () => {
 				<Route path="/user-info" element={<UserInfoPage />} />
 
 				{/* If you add or change any routes, remember to update the Landing Page! */}
-				<Route path="/" element={<LandingPage />} />
+				<Route path="/home" element={<LandingPage />} />
+				<Route path="/" element={<ChatWithCode />} />
+
 			</Routes>
 		</BrowserRouter>
 	);

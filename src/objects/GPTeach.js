@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { ClientJS } from "clientjs";
-import { DATABASE } from "../utils/database_setup.js";
+//import { doc, setDoc } from "firebase/firestore";
+//import { ClientJS } from "clientjs";
+//import { DATABASE } from "../utils/database_setup.js";
 import { Constants } from "../config/constants";
 import { objectToArray, shuffleArray } from "../utils/primitiveManipulation.js";
 
@@ -76,61 +76,61 @@ export function GPTeachProvider({ children }) {
 	}
 
 	/** Record all information in Firebase */
-	function createFirebaseDocument() {
-		// Create the document in Firebase
-		const thisDoc = doc(
-			DATABASE,
-			Constants.FIREBASE_TOP_LEVEL_COLLECTION,
-			uid.toString()
-		);
+	// function createFirebaseDocument() {
+	// 	// Create the document in Firebase
+	// 	const thisDoc = doc(
+	// 		DATABASE,
+	// 		Constants.FIREBASE_TOP_LEVEL_COLLECTION,
+	// 		uid.toString()
+	// 	);
 
-		const client = new ClientJS();
+		//const client = new ClientJS();
 
 		// Add properties to Firebase document
-		setDoc(
-			thisDoc,
-			{
-				date: new Date().toLocaleString("en-US", {
-					timeZone: "America/Los_Angeles",
-					weekday: "short",
-					year: "numeric",
-					month: "numeric",
-					day: "numeric",
-					hour: "numeric",
-					minute: "numeric",
-					second: "numeric",
-				}),
-				GPTeachConfiguration: {
-					GPTversion: Constants.GPT_VERSION,
-					prompt_setScene: Constants.GPT_SET_SCENE,
-					prompt_responseInstructions: Constants.GPT_RESPONSE_INSTRUCTIONS,
-					file_students: Constants.STUDENT_FILE,
-					file_learningGoals: Constants.LEARNING_GOAL_FILE,
-					file_scenario: Constants.SCENARIO_FILE,
-					isProd: Constants.IS_PRODUCTION,
-				},
-				userData: {
-					userAgent: navigator.userAgent,
-					browserLanguage: navigator.language || navigator.userLanguage,
-					// More likely to be not-unique, but hard to change
-					customFingerprint: createCustomFingerprint(client),
-					// More specific, but easier to change
-					defaultFingerprint: client.getFingerprint(),
-				},
-			},
-			{ merge: true }
-		);
-	}
+	// 	setDoc(
+	// 		thisDoc,
+	// 		{
+	// 			date: new Date().toLocaleString("en-US", {
+	// 				timeZone: "America/Los_Angeles",
+	// 				weekday: "short",
+	// 				year: "numeric",
+	// 				month: "numeric",
+	// 				day: "numeric",
+	// 				hour: "numeric",
+	// 				minute: "numeric",
+	// 				second: "numeric",
+	// 			}),
+	// 			GPTeachConfiguration: {
+	// 				GPTversion: Constants.GPT_VERSION,
+	// 				prompt_setScene: Constants.GPT_SET_SCENE,
+	// 				prompt_responseInstructions: Constants.GPT_RESPONSE_INSTRUCTIONS,
+	// 				file_students: Constants.STUDENT_FILE,
+	// 				file_learningGoals: Constants.LEARNING_GOAL_FILE,
+	// 				file_scenario: Constants.SCENARIO_FILE,
+	// 				isProd: Constants.IS_PRODUCTION,
+	// 			},
+	// 			userData: {
+	// 				userAgent: navigator.userAgent,
+	// 				browserLanguage: navigator.language || navigator.userLanguage,
+	// 				// More likely to be not-unique, but hard to change
+	// 				customFingerprint: createCustomFingerprint(client),
+	// 				// More specific, but easier to change
+	// 				defaultFingerprint: client.getFingerprint(),
+	// 			},
+	// 		},
+	// 		{ merge: true }
+	// 	);
+	// }
 
 	/** Generates a number based on hard-to-change information about the user's computer to attempt to identify them */
-	function createCustomFingerprint(client) {
-		return client.getCustomFingerprint(
-			client.getOSVersion(),
-			client.getDeviceType(),
-			client.getCPU(),
-			client.getFonts()
-		);
-	}
+	// function createCustomFingerprint(client) {
+	// 	return client.getCustomFingerprint(
+	// 		client.getOSVersion(),
+	// 		client.getDeviceType(),
+	// 		client.getCPU(),
+	// 		client.getFonts()
+	// 	);
+	// }
 
 	if (uid && students && learningGoals && scenarios) {
 		// createFirebaseDocument();
@@ -144,7 +144,7 @@ export function GPTeachProvider({ children }) {
 					UID: uid,
 					TAname,
 					setTAname,
-					createFirebaseDocument,
+					//createFirebaseDocument,
 				}}
 			>
 				{children}

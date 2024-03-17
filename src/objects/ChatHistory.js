@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { DATABASE } from "../utils/database_setup.js";
-import { Constants } from "../config/constants";
-import { GPTeachContext } from "./GPTeach.js";
+import React, { createContext, useState } from "react";
+//import { doc, setDoc } from "firebase/firestore";
+//import { DATABASE } from "../utils/database_setup.js";
+//import { Constants } from "../config/constants";
+//import { GPTeachContext } from "./GPTeach.js";
 
 export const HistoryContext = createContext();
 
 export function HistoryProvider({ children }) {
-	const GPTeachData = useContext(GPTeachContext);
+//	const GPTeachData = useContext(GPTeachContext);
 	const [messages, setMessages] = useState([]);
 	const [scenarioNum, setScenarioNum] = useState(0);
 
@@ -16,7 +16,7 @@ export function HistoryProvider({ children }) {
 	/** add a single message object to the array */
 	history.addMessage = (msg) => {
 		setMessages((prevArray) => [...prevArray, msg]);
-		writeToFirebase(msg, GPTeachData.UID, scenarioNum);
+		//writeToFirebase(msg, GPTeachData.UID, scenarioNum);
 	};
 
 	/** add multiple message objects to the array */
@@ -47,7 +47,6 @@ export function HistoryProvider({ children }) {
 		});
 	};
 
-	// TODO: write this
 	history.undoMessage = () => {
 		return;
 	};
@@ -84,35 +83,35 @@ export function HistoryProvider({ children }) {
 	);
 }
 
-function writeToFirebase(msg, uid, scenarioNum) {
-	// Don't write to Firebase during testing
-	if (!Constants.IS_PRODUCTION) {
-		return;
-	}
+// function writeToFirebase(msg, uid, scenarioNum) {
+// 	// Don't write to Firebase during testing
+// 	if (!Constants.IS_PRODUCTION) {
+// 		return;
+// 	}
 
-	const thisDoc = doc(
-		DATABASE,
-		Constants.FIREBASE_TOP_LEVEL_COLLECTION,
-		uid.toString(),
-		`scenario-${scenarioNum.toString().padStart(2, "0")}`,
-		// This is time written to Firebase, not time of message creation; ideally, no collisions
-		new Date().valueOf().toString()
-	);
+// 	const thisDoc = doc(
+// 		DATABASE,
+// 		Constants.FIREBASE_TOP_LEVEL_COLLECTION,
+// 		uid.toString(),
+// 		`scenario-${scenarioNum.toString().padStart(2, "0")}`,
+// 		// This is time written to Firebase, not time of message creation; ideally, no collisions
+// 		new Date().valueOf().toString()
+// 	);
 
-	setDoc(thisDoc, {
-		role: msg.role,
-		content: msg.text,
-		name: msg.agent,
-		timestamp: msg.timestamp,
-		prettyDate: msg.dateObject.toLocaleString("en-US", {
-			timeZone: "America/Los_Angeles",
-			weekday: "short",
-			year: "numeric",
-			month: "numeric",
-			day: "numeric",
-			hour: "numeric",
-			minute: "numeric",
-			second: "numeric",
-		}),
-	});
-}
+// 	setDoc(thisDoc, {
+// 		role: msg.role,
+// 		content: msg.text,
+// 		name: msg.agent,
+// 		timestamp: msg.timestamp,
+// 		prettyDate: msg.dateObject.toLocaleString("en-US", {
+// 			timeZone: "America/Los_Angeles",
+// 			weekday: "short",
+// 			year: "numeric",
+// 			month: "numeric",
+// 			day: "numeric",
+// 			hour: "numeric",
+// 			minute: "numeric",
+// 			second: "numeric",
+// 		}),
+// 	});
+// }

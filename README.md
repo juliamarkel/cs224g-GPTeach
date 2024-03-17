@@ -2,7 +2,7 @@
 
 ## Running it yourself
 1. git clone
-2. fill in .env vars (API keys for firebase and openAI)
+2. fill in .env var (API key for openAI)
 3. follow development instructions
 
 ## Development
@@ -11,7 +11,15 @@
 2. `npm start`
 3. Go to <http://localhost:3000>
 
-## Configuring GPTeach
+
+### Notes on running GPTeach:
+_there may be node versioning issues if this is the case, see below_
+`nvm install 16.18.0`
+`node use 16.18.0`
+
+
+
+## Personalizing GPTeach 
 
 GPTeach should be configured in `src/config/constants.js`.
 

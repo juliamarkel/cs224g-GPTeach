@@ -57,12 +57,11 @@ async function callGPT3(history, students, scenario, addendum, onResponse) {
 			top_p: 1,
 			frequency_penalty: 0,
 			presence_penalty: 0,
-			// TODO: use the user-specified name
+			// TODO: use the user-specified name ?
 			stop: ["TA: "],
 		})
 		.then((response) => {
 			if (response.data.choices[0].text) {
-				// TODO: handle if response is in wrong format
 				onResponse(convertResponseToMessages(response.data.choices[0].text, null, students));
 			} else {
 				console.log("didn't get a response....");
@@ -136,7 +135,7 @@ function convertResponseToMessages(gptResponse, fromCode, students) {
 		console.log("hi i'm where i should be")
 		if(fromCode){
 			console.log("are we here?", students[0]['name'])
-			newMessages.push(new ChatMessage(students[0]['name'], "sure!", "assistant"))
+			newMessages.push(new ChatMessage(students[0]['name'], "Here it!", "assistant"))
 			return newMessages;
 		}
 		return null;

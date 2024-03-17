@@ -27,8 +27,6 @@ export const Chat = () => {
 	useEffect(() => {
 		if (isQuerying) {
 			callGPT(history, students, scenario, null, (gptMessages) => {
-				//console.log("this is addendum:", addendum)
-				console.log("this is gptMessages:", gptMessages)
 				if (gptMessages[0]) {
 					// Add messages, with delay only if in production
 					history.addMessages(gptMessages, Constants.IS_PRODUCTION).then(() => {

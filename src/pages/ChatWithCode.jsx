@@ -37,8 +37,6 @@ export const ChatWithCode = () => {
 				Constants.GPT_CODE_ADDENDUM + "\nStudent code goes here, wrapped in <CODE_EDITOR> </CODE_EDITOR>: \n" + codeHistory,
 				(gptMessages, codePieces) => {
 					// Add the messages from GPT
-					console.log("this is the message ", gptMessages)
-					console.log("what is this homie? ", gptMessages[0])
 					if (codePieces) {
 						setEditorContent(codePieces.join("\n\n"));
 						setIsQuerying(false)

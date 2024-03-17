@@ -9,13 +9,11 @@ export function CodeProvider({ children }) {
 
 	/** add a single message object to the array */
 	codeHistory.addCode = (cp) => {
-		console.log("are we here or what?")
 		setCodePieces((prevArray) => [...prevArray, cp]);
 	};
 
 	/** add multiple message objects to the array */
 	codeHistory.addCodes = (codePieces) => {
-		console.log("did this happen??")
 		return new Promise((resolve) => {
 				// By default, just add the messages
 				codePieces.forEach((cp) => {
